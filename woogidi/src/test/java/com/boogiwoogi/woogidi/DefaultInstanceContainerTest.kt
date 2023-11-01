@@ -1,22 +1,21 @@
+package com.boogiwoogi.woogidi
 
-package di
-
-import com.boogiwoogi.di.DefaultInstanceContainer
-import com.boogiwoogi.di.Inject
-import com.boogiwoogi.di.Instance
-import com.boogiwoogi.di.InstanceContainer
-import com.boogiwoogi.di.Qualifier
-import org.junit.jupiter.api.Assertions.assertNull
-import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import com.boogiwoogi.woogidi.pure.DefaultInstanceContainer
+import com.boogiwoogi.woogidi.pure.Inject
+import com.boogiwoogi.woogidi.pure.Instance
+import com.boogiwoogi.woogidi.pure.InstanceContainer
+import com.boogiwoogi.woogidi.pure.Qualifier
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
 import kotlin.reflect.full.primaryConstructor
 
 class DefaultInstanceContainerTest {
 
     lateinit var container: InstanceContainer
 
-    @BeforeEach
+    @Before
     fun setup() {
         container = DefaultInstanceContainer()
     }

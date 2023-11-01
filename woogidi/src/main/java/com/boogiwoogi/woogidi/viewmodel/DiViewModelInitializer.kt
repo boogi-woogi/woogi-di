@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.boogiwoogi.di.InstanceContainer
-import com.boogiwoogi.di.Module
 import com.boogiwoogi.woogidi.activity.DiActivity
 import com.boogiwoogi.woogidi.application.DiApplication
+import com.boogiwoogi.woogidi.pure.InstanceContainer
+import com.boogiwoogi.woogidi.pure.Module
 
 @MainThread
 inline fun <reified VM : ViewModel> DiActivity.diViewModels(): Lazy<VM> = ViewModelLazy(

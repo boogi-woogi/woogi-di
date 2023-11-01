@@ -2,9 +2,9 @@ package com.boogiwoogi.woogidi.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.boogiwoogi.di.InstanceContainer
-import com.boogiwoogi.di.Module
 import com.boogiwoogi.woogidi.application.DiApplication
+import com.boogiwoogi.woogidi.pure.InstanceContainer
+import com.boogiwoogi.woogidi.pure.Module
 
 abstract class DiActivity : AppCompatActivity() {
 

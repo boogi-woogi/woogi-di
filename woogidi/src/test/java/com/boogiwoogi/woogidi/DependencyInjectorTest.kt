@@ -1,20 +1,18 @@
-package di
+package com.boogiwoogi.woogidi
 
-import com.boogiwoogi.di.DefaultInstanceContainer
-import com.boogiwoogi.di.DefaultModule
-import com.boogiwoogi.di.DiInjector
-import com.boogiwoogi.di.Inject
-import com.boogiwoogi.di.InstanceContainer
-import com.boogiwoogi.di.Module
-import com.boogiwoogi.di.Qualifier
+import com.boogiwoogi.woogidi.pure.DefaultInstanceContainer
+import com.boogiwoogi.woogidi.pure.DefaultModule
+import com.boogiwoogi.woogidi.pure.DiInjector
+import com.boogiwoogi.woogidi.pure.Inject
+import com.boogiwoogi.woogidi.pure.InstanceContainer
+import com.boogiwoogi.woogidi.pure.Module
+import com.boogiwoogi.woogidi.pure.Qualifier
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertAll
-import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 class DependencyInjectorTest {
 
@@ -37,7 +35,7 @@ class DependencyInjectorTest {
 
         // then
         val expected = ClassB()
-        assertThat(actual).isEqualTo(expected)
+        assertEquals(expected, actual)
     }
 
     @Test
@@ -59,7 +57,7 @@ class DependencyInjectorTest {
         // then
         val expected = ClassE(ClassF())
 
-        assertThat(actual).isEqualTo(expected)
+        assertEquals(expected, actual)
     }
 
     @Test
@@ -86,7 +84,7 @@ class DependencyInjectorTest {
         // then
         val expected = ClassB()
 
-        assertThat(actual).isEqualTo(expected)
+        assertEquals(expected, actual)
         verify {
             container.find(parameter = any())
         }
@@ -121,13 +119,13 @@ class DependencyInjectorTest {
         // then
         val expected = ClassB()
 
-        assertThat(actual).isEqualTo(expected)
+        assertEquals(expected, actual)
         verify {
             module.provideInstanceOf(clazz = ClassB::class)
         }
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException::class)
     fun `생성자의 인자에 Inject annotation이 붙어있는 프로퍼티가 Container에도 존재하지 않고 module을 통해 생성할 수 없는 경우 예외가 발생한다`() {
         // given
         data class ClassB(val data: String = "")
@@ -149,10 +147,8 @@ class DependencyInjectorTest {
             module = module
         )
 
-        // then
-        assertThrows<IllegalArgumentException> {
-            injector.inject<ClassA>()
-        }
+        // when
+        injector.inject<ClassA>()
     }
 
     @Test
@@ -178,7 +174,7 @@ class DependencyInjectorTest {
         // then
         val expected = ClassB()
 
-        assertThat(actual).isEqualTo(expected)
+        assertEquals(expected, actual)
     }
 
     @Test
@@ -215,15 +211,11 @@ class DependencyInjectorTest {
         val actual2 = instanceA.fake2
 
         // then
-        assertAll(
-            {
-                assertTrue(actual1 is FakeImpl1)
-                assertTrue(actual2 is FakeImpl2)
-            }
-        )
+        assertTrue(actual1 is FakeImpl1)
+        assertTrue(actual2 is FakeImpl2)
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException::class)
     fun `Qualifier에 선언한 타입의 인스턴스가 Container에 존재하지 않고 module에서 생성이 가능하지 않다면 예외가 발생한다`() {
         // given
         class FakeImpl1 : FakeInterface
@@ -251,9 +243,7 @@ class DependencyInjectorTest {
             module = module
         )
 
-        // then
-        assertThrows<IllegalArgumentException> {
-            injector.inject<ClassA>()
-        }
+        // when
+        injector.inject<ClassA>()
     }
 }

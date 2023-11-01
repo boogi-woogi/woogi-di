@@ -1,4 +1,4 @@
-package com.boogiwoogi.di
+package com.boogiwoogi.woogidi.pure
 
 @Target(AnnotationTarget.PROPERTY, AnnotationTarget.VALUE_PARAMETER)
 annotation class Inject
