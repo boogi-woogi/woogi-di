@@ -1,4 +1,4 @@
-package com.boogiwoogi.di
+package com.boogiwoogi.woogidi.pure
 
 import kotlin.reflect.full.hasAnnotation
 import kotlin.reflect.full.primaryConstructor

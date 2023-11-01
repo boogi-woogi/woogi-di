@@ -1,7 +1,7 @@
 package com.boogiwoogi.woogidi.application
 
 import android.app.Application
-import com.boogiwoogi.di.DiInjector
+import com.boogiwoogi.woogidi.pure.DiInjector
 
 open class DiApplication : Application() {
 

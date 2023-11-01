@@ -1,4 +1,4 @@
-package com.boogiwoogi.di
+package com.boogiwoogi.woogidi.pure
 
 import kotlin.reflect.KClass
 import kotlin.reflect.KParameter

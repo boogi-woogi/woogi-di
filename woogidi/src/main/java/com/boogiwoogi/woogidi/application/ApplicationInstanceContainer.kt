@@ -1,9 +1,9 @@
 package com.boogiwoogi.woogidi.application
 
 import androidx.lifecycle.DefaultLifecycleObserver
-import com.boogiwoogi.di.Instance
-import com.boogiwoogi.di.InstanceContainer
-import com.boogiwoogi.di.Qualifier
+import com.boogiwoogi.woogidi.pure.Instance
+import com.boogiwoogi.woogidi.pure.InstanceContainer
+import com.boogiwoogi.woogidi.pure.Qualifier
 import kotlin.reflect.KClass
 import kotlin.reflect.KParameter
 import kotlin.reflect.full.findAnnotation
