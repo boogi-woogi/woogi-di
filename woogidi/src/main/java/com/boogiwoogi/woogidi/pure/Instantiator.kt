@@ -36,13 +36,14 @@ class Instantiator {
     }
 
     private fun KClass<*>.instantiateRecursively(module: Module): Any? {
-        val constructor = primaryConstructor ?: return null
-        if (constructor.parameters.isEmpty()) return constructor.call()
+        primaryConstructor?.let { constructor ->
+            if (constructor.parameters.isEmpty()) return constructor.call()
 
-        val arguments = instantiateParameters(module, constructor.parameters)
-        if (arguments.any { it == null }) return null
-
-        return constructor.call(*arguments)
+            val arguments = instantiateParameters(module, constructor.parameters)
+            if (arguments.any { it == null }) return null
+            return constructor.call(*arguments)
+        }
+        return module.provideInstanceOf(this)
     }
 
     fun instantiateProperty(module: Module, property: KMutableProperty<*>): Any? {
