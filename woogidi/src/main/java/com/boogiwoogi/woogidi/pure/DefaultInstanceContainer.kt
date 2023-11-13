@@ -17,7 +17,7 @@ open class DefaultInstanceContainer(
     }
 
     override fun find(clazz: KClass<*>): Any? = value?.find {
-        it.clazz.contains(clazz)
+        it.isTypeOf(clazz)
     }?.value
 
     override fun find(simpleName: String?): Any? = value?.find {

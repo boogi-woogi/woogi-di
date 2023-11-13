@@ -22,7 +22,7 @@ class ActivityInstanceContainer(
     }
 
     override fun find(clazz: KClass<*>): Any? = value?.find {
-        it.clazz == clazz
+        it.isTypeOf(clazz)
     }?.value
 
     override fun find(simpleName: String?): Any? = value?.find {
