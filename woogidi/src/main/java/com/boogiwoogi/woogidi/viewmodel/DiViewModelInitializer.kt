@@ -1,4 +1,4 @@
-package com.di.woogidi.viewmodel
+package com.boogiwoogi.woogidi.viewmodel
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.ViewModel
@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.boogiwoogi.woogidi.activity.DiActivity
 import com.boogiwoogi.woogidi.application.DiApplication
+import com.boogiwoogi.woogidi.fragment.DiFragment
 import com.boogiwoogi.woogidi.pure.InstanceContainer
 import com.boogiwoogi.woogidi.pure.Module
 
@@ -31,3 +32,22 @@ inline fun <reified VM : ViewModel> diViewModelFactory(
         }
     }
 }
+
+/**
+ * viewModel will not be sharing each fragments
+ */
+@MainThread
+inline fun <reified VM : ViewModel> DiFragment.diViewModels(): Lazy<VM> = ViewModelLazy(
+    VM::class,
+    { viewModelStore },
+    { diViewModelFactory<VM>(instanceContainer, module) },
+)
+
+/**
+ * viewModel will be sharing each fragments contained on same activity
+ */
+@MainThread
+inline fun <reified VM : ViewModel> DiFragment.diActivityViewModels(): Lazy<VM> = ViewModelLazy(
+    VM::class, { requireActivity().viewModelStore },
+    { diViewModelFactory<VM>(instanceContainer, module) }
+)
