@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".injectionexample.fragment.FirstFragment">
+    tools:context=".injectionexample.fragment.sharedViewModel.FirstFragment">
 
     <TextView
         android:id="@+id/second_fragment_tv_title"

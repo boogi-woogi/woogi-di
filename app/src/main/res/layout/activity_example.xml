@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".injectionexample.fragment.ExampleActivity">
+    tools:context=".injectionexample.fragment.sharedViewModel.ExampleActivity">
 
     <Button
         android:id="@+id/example_btn_first_fragment"

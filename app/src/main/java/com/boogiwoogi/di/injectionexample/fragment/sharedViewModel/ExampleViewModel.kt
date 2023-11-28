@@ -1,4 +1,4 @@
-package com.boogiwoogi.di.injectionexample.fragment
+package com.boogiwoogi.di.injectionexample.fragment.sharedViewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

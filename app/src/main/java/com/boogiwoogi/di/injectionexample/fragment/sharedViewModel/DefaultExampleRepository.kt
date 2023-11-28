@@ -1,4 +1,4 @@
-package com.boogiwoogi.di.injectionexample.fragment
+package com.boogiwoogi.di.injectionexample.fragment.sharedViewModel
 
 class DefaultExampleRepository : ExampleRepository {
 

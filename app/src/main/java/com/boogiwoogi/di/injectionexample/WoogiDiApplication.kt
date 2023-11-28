@@ -1,7 +1,7 @@
 package com.boogiwoogi.di.injectionexample
 
-import com.boogiwoogi.di.injectionexample.fragment.DefaultExampleRepository
-import com.boogiwoogi.di.injectionexample.fragment.ExampleRepository
+import com.boogiwoogi.di.injectionexample.fragment.sharedViewModel.DefaultExampleRepository
+import com.boogiwoogi.di.injectionexample.fragment.sharedViewModel.ExampleRepository
 import com.boogiwoogi.woogidi.application.DiApplication
 import com.boogiwoogi.woogidi.pure.Instance
 

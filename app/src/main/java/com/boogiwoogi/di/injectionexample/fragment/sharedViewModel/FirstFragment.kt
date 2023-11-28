@@ -1,4 +1,4 @@
-package com.boogiwoogi.di.injectionexample.fragment
+package com.boogiwoogi.di.injectionexample.fragment.sharedViewModel
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.boogiwoogi.woogidi.pure.DefaultModule
 import com.boogiwoogi.woogidi.pure.Module
 import com.boogiwoogi.woogidi.viewmodel.diActivityViewModels
 
-class SecondFragment : DiFragment() {
+class FirstFragment : DiFragment() {
 
     override val module: Module = DefaultModule()
 
@@ -20,6 +20,9 @@ class SecondFragment : DiFragment() {
     private lateinit var plusButton: Button
     private lateinit var minusButton: Button
 
+    /**
+     * You can use diViewModels() for injecting dependency to viewModel on DiFragment, too.
+     */
     private val exampleViewModel: ExampleViewModel by diActivityViewModels()
 
     override fun onCreateView(
@@ -28,11 +31,11 @@ class SecondFragment : DiFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater
-            .inflate(R.layout.fragment_second, container, false)
+            .inflate(R.layout.fragment_first, container, false)
             .also {
-                countText = it.findViewById(R.id.second_fragment_tv_count)
-                plusButton = it.findViewById(R.id.second_fragment_btn_plus)
-                minusButton = it.findViewById(R.id.second_fragment_btn_minus)
+                countText = it.findViewById(R.id.first_fragment_tv_count)
+                plusButton = it.findViewById(R.id.first_fragment_btn_plus)
+                minusButton = it.findViewById(R.id.first_fragment_btn_minus)
             }
 
         return view
