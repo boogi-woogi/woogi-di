@@ -55,7 +55,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.boogiwoogi"
             artifactId = "woogidi"
-            version = "1.0.3"
+            version = "1.1.0"
 
             afterEvaluate {
                 from(components["release"])
