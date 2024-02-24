@@ -8,7 +8,7 @@ Here's the examples of android project applied WOOGI-di.
 
 ### FOSS (Fc online stats searching)
 
-- Fc Online is football game in South Korea. This android application provides match results to user. Specially we provides relative match result for opponents you often played with.
+Fc Online is football game in South Korea. This android application provides match results to user. Specially we provides relative match result for opponents you often played with.
 
 [GitHub - fc-online-stats-searching/foss at oldversion](https://github.com/fc-online-stats-searching/foss/tree/oldversion)
 
@@ -35,14 +35,14 @@ If you want to inject some dependencies on your Activity you should inherit this
 ```groovy
 abstract class DiActivity : AppCompatActivity() {
 
-		/**
-		 instanceContainer is literally instance container that contains instances injected this Activity.
-		**/
+    /**
+     instanceContainer is literally instance container that contains instances injected this Activity.
+     **/
     val instanceContainer: InstanceContainer = ActivityInstanceContainer()
 
-		/**
-			module is interface which has the way of creating instances that you want to inject on this Activity.
-		**/	
+    /**
+     module is interface which has the way of creating instances that you want to inject on this Activity.
+     **/	
     abstract val module: Module
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,11 +50,11 @@ abstract class DiActivity : AppCompatActivity() {
 
         setupInjector()
     }
-		...
+    ...
 
-		/**
-			this method makes injecting dependencies by using Activity's container, module and Application's container, module
-		**/
+    /**
+     this method makes injecting dependencies by using Activity's container, module and Application's container, module
+     **/
     private fun setupInjector() {
         DiApplication.injector.inject(
             target = this,
@@ -148,10 +148,10 @@ inline fun <reified VM : ViewModel> DiFragment.diActivityViewModels(): Lazy<VM> 
 
 ```kotlin
 class HomeActivity : DiActivity() {
-		...
-		/**
-		 * if there's no dependencies that Activity should know, initialize module just like this.
-		 */
+    ...
+    /**
+     * if there's no dependencies that Activity should know, initialize module just like this.
+     */
     override val module: Module by lazy { DefaultModule() }
 
     private val recentMatchViewModel: RecentMatchViewModel by diViewModels()
@@ -172,8 +172,8 @@ class CartActivity : DiActivity() {
 
     private val viewModel by diViewModels<CartViewModel>()
 
-		/**
-		 * You should add clarify Inject annotation that you want to inject. This property is going to be initialize on OnCreate() as I explained before.
+    /**
+     * You should add clarify Inject annotation that you want to inject. This property is going to be initialize on OnCreate() as I explained before.
      */
     @Inject
     private lateinit var dateFormatter: DateFormatter
@@ -195,7 +195,7 @@ Here’s the example on [Sample App](https://github.com/woowacourse/android-di/t
 ```kotlin
 class ShoppingApplicationModule(private val context: Context) : DefaultModule() {
 
-		...
+    ...
     @Qualifier("DatabaseCartRepository")
     @Provides
     fun provideDatabaseCartRepository(): CartRepository {
@@ -209,7 +209,7 @@ class ShoppingApplicationModule(private val context: Context) : DefaultModule() 
     fun provideInMemoryCartRepository(): CartRepository {
         return InMemoryCartRepository()
     }
-		...
+    ...
 }
 ```
 
