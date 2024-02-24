@@ -216,5 +216,4 @@ class ShoppingApplicationModule(private val context: Context) : DefaultModule() 
 ### Test code
 
 On test code maybe you'll be able to see various cases.
-
-[](https://github.com/boogi-woogi/woogi-di/tree/main/woogidi/src/test/java/com/boogiwoogi/woogidi)
+https://github.com/boogi-woogi/woogi-di/tree/main/woogidi/src/test/java/com/boogiwoogi/woogidi
